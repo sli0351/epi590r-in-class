@@ -1,3 +1,4 @@
 # EPI590R repo
 
-This repository belongs to Louisa H. Smith
+This repository belongs to Sifei Li
+
