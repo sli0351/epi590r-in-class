@@ -38,7 +38,7 @@ write_rds(nlsy_cc, here::here("data", "clean", "nlsy-complete-cases.rds"))
 #Saving address/Project directory: here::here()
 #*even if the working directory is changed (e.g."getwd" "setwd"), it remains the same.
 
-#Reason why it doesn't work when using getwd() & setwd():
-#
+#Reason why it doesn' work: dplyr conflicted, happens often with SAS packages. doesn't have much impact on our work.
+
 #Good ver. VS Bad Ver.
 #
