@@ -23,11 +23,26 @@ sqr <- function(z){
 	sqr_val <- z^2
 	return(sqr_val)
 }
-sqr(x=c(100,9899))
+sqr(z=c(100,9899))
 ```
-Exercise 2.5:
+
+*Exercise: Add to numbers
+
 ```{r}
-
+sum <- function(a,b){
+	sum_val <- a+b
+	return(sum_val)
+}
+sum(4,6)
 ```
 
+Exercise 2.5: raise powers
+
+```{r}
+raise <- function(a,b=2){
+	nth_power <- a^b
+	return(nth_power)
+}
+raise(1.33, 9)
+```
 The `echo: false` option disables the printing of code (only output is displayed).
