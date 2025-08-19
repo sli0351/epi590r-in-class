@@ -3,12 +3,12 @@ title: "gtsummary in quarto"
 author: Sophia 
 format: 
   html: 
-    theme: minty
+    theme: quartz
 execute: 
   echo: false
 ---
 
-*text before code chunk* Changing the theme to "quartz" can make a huge difference.
+*text before code chunk* I'm so hungry right now.
 
 ```{r}
 #| message: false
