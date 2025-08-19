@@ -69,8 +69,8 @@ tbl_summary(
 
 ```{r}
 #for this code to work you'll need to run the previous codes !the first chunk! first.
-mean_wkdy <- mean(nlsy$sleep_wkdy)
-median_wkdy <- median(nlsy$sleep_wkdy)
+mean_wkdy <- mean(nlsy$sleep_wkdy, na.rm = TRUE)
+median_wkdy <- median(nlsy$sleep_wkdy, na.rm = TRUE)
 ```
-The mean of sleeping time on weekdays is `r mean_wkdy`.
-The median of sleeping time on weekdyas is `r median_wkdy`.
+The mean of sleeping time on weekdays is `r round(mean_wkdy, 2)`.
+The median of sleeping time on weekdyas is `r round(median_wkdy, 2)`.
