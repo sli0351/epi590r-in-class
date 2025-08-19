@@ -16,14 +16,18 @@ new_mean <- function(x){
 new_mean(x=c(100,200,300))
 ```
 
-Exercise 2.4: x^2
+Exercise 2.4: Calculate squares
 
 ```{r}
-sqr <- function(x){
-	sqr_val <- x^2
+sqr <- function(z){
+	sqr_val <- z^2
 	return(sqr_val)
 }
 sqr(x=c(100,9899))
+```
+Exercise 2.5:
+```{r}
+
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
