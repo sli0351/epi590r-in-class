@@ -8,8 +8,8 @@ execute:
   echo: false
 ---
 
-*text before code chunk*
-Minty: a fresh feeling
+*text before code chunk* Changing the theme to "quartz" can make a huge difference.
+
 ```{r}
 #| message: false
 library(tidyverse)
