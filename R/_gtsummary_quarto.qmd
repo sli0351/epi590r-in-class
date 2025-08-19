@@ -1,9 +1,15 @@
 ---
 title: "gtsummary in quarto"
-format: html
+author: Sophia 
+format: 
+  html: 
+    theme: minty
+execute: 
+  echo: false
 ---
 
 ```{r}
+#| message: false
 library(tidyverse)
 library(gtsummary)
 nlsy_cols <- c("glasses", "eyesight", "sleep_wkdy", "sleep_wknd", 
