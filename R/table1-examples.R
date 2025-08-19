@@ -1,5 +1,6 @@
-library(tidyverse)
+install.packages("gtsummary", dependencies = TRUE)
 library(gtsummary)
+library(tidyverse)
 
 # Load and clean data
 nlsy_cols <- c(
@@ -65,10 +66,10 @@ tbl_summary(
   missing_text = "Missing"
 ) |>
   # change the test used to compare sex_cat groups
-  add_p(test = list(
-    all_continuous() ~ "t.test",
-    all_categorical() ~ "chisq.test"
-  )) |>
+	add_p(test = list(
+		all_continuous() ~ "t.test",
+		all_categorical() ~ "chisq.test"
+	)) |>
   # add a total column with the number of observations
   add_overall(col_label = "**Total** N = {N}") |>
   bold_labels() |>
@@ -77,4 +78,72 @@ tbl_summary(
   # replace the column headers and make them bold
   modify_header(label = "**Variable**", p.value = "**P**")
 
+#Creating a table including categorical region, race/ethnicity, income, and the sleep variables
+# creating the table & including all variables (sleep-code on slides page88)
+# add labels and for the missing category
+# add p-values comparing the sexes and a combined column
+tbl_summary(
+	nlsy,
+	by = sex_cat,
+	include = c(
+		sex_cat, race_eth_cat, region_cat,
+		income, starts_with("sleep")
+	),
+	label = list(
+		race_eth_cat ~ "Race/ethnicity",
+		region_cat ~ "Region",
+		income ~ "Income",
+		sleep_wkdy ~ "Sleep on Week Days",
+		sleep_wknd ~ "Sleep on Weekends"
+	)
+) |>
+	add_p(test = list(
+		all_continuous() ~ "t.test",
+		all_categorical() ~ "chisq.test"
+	)) |>
+	add_overall()
 
+# show the 10th and 90th percentiles of income with 3 digits
+# show the min and the max of sleep variables with 1 digit
+tbl_summary(
+	nlsy,
+	by = sex_cat,
+	include = c(
+		sex_cat, race_eth_cat, region_cat,
+		income, starts_with("sleep")
+	),
+	label = list(
+		race_eth_cat ~ "Race/ethnicity",
+		region_cat ~ "Region",
+		income ~ "Income",
+		sleep_wkdy ~ "Sleep on Week Days",
+		sleep_wknd ~ "Sleep on Weekends"
+	),
+	statistic = list(starts_with ("sleep") ~ "min = {min}; max = {max}",
+										income ~ "{p10} to {p90}"),
+	digits = list(starts_with("sleep") ~ c (1,1),
+								income ~ c (3,3))
+)
+
+# add a footnote (including a link) to the race/ethnicity variable
+# figured out how to do this from
+# https://stackoverflow.com/questions/73154658/adding-a-footnote-to-a-single-row-label-in-a-gtsummary-table
+tbl_summary(
+	nlsy,
+	by = sex_cat,
+	include = c(
+		sex_cat, race_eth_cat, region_cat,
+		income, starts_with("sleep")
+	),
+	label = list(
+		race_eth_cat ~ "Race/ethnicity",
+		region_cat ~ "Region",
+		income ~ "Income",
+		sleep_wkdy ~ "Sleep on Week Days",
+		sleep_wknd ~ "Sleep on Weekends"
+	)) |>
+modify_table_styling(
+		columns = label,
+		rows = label == "Race/ethnicity",
+		footnote = "see https://www.nlsinfo.org/content/cohorts/nlsy79/topical-guide/household/race-ethnicity-immigration-data"
+)
