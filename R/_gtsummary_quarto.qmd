@@ -30,6 +30,8 @@ nlsy <- read_csv(here::here("data", "raw", "nlsy.csv"),
 # Customization of `tbl_summary()`
 
 ```{r}
+#| label: tbl-one
+#| tbl-cap: "Basic Characteristics-ver 0."
 tbl_summary(
   nlsy,
   by = sex_cat,
@@ -38,6 +40,8 @@ tbl_summary(
 ```
 
 ```{r}
+#| label: tbl-two
+#| tbl-cap: "Basic Characteristics"
 tbl_summary(
   nlsy,
   by = sex_cat,
@@ -53,6 +57,8 @@ tbl_summary(
   missing_text = "Missing")
 ```
 
+@tbl-one and @tbl-two shows the descriptive stastistics.
+
 ```{r}
 tbl_summary(
   nlsy,
@@ -60,3 +66,11 @@ tbl_summary(
   include = c(sex_cat, race_eth_cat, region_cat,
               eyesight_cat, glasses, age_bir))
 ```
+
+```{r}
+#for this code to work you'll need to run the previous codes !the first chunk! first.
+mean_wkdy <- mean(nlsy$sleep_wkdy)
+median_wkdy <- median(nlsy$sleep_wkdy)
+```
+The mean of sleeping time on weekdays is `r mean_wkdy`.
+The median of sleeping time on weekdyas is `r median_wkdy`.
