@@ -8,6 +8,8 @@ execute:
   echo: false
 ---
 
+*text before code chunk*
+Minty: a fresh feeling
 ```{r}
 #| message: false
 library(tidyverse)
@@ -49,4 +51,12 @@ tbl_summary(
     age_bir ~ "Age at first birth"
   ),
   missing_text = "Missing")
+```
+
+```{r}
+tbl_summary(
+  nlsy,
+  by = sex_cat,
+  include = c(sex_cat, race_eth_cat, region_cat,
+              eyesight_cat, glasses, age_bir))
 ```
