@@ -46,23 +46,42 @@ raise <- function(a,power=2){
 raise(1.33, 9)
 ```
 
-2.6: Standard Deviation
+2.6.1: Standard Deviation
 
 ```{r}
 STD <- function(x){
-	denominator <- length(x) -1
-	mean_val <- mean(x)
-	sqr_dif <- (x-mean_val)^2
-	numerator <- sum(sqr_dif)
-	std_val <- sqrt(numerator/denominator)
-	if (denominator >0){
-		std_val <- std_val
-		return(std_val)
-	}else{
+	if (length(x) <= 1){
 		print("NA")
+	}else{mean_val <- mean(x)
+		sqr_dif <- (x-mean_val)^2
+		numerator <- sum(sqr_dif)
+		std_val <- sqrt(numerator/(length(x)-1))
+		return(std_val)
 	}
-	
 }
 ```
+
+2.6.2: SD + remove missing values in advance
+
+```{r}
+STD2 <- function(x, na.rm= TRUE){
+	if (na.rm){
+		x = na.omit(x)
+		mean_val <- mean(x)
+		sqr_dif <- (x-mean_val)^2
+		numerator <- sum(sqr_dif)
+		std_val <- sqrt(numerator/(length(x)-1))
+		return(std_val)
+	} else{
+		mean_val <- mean(x)
+		sqr_dif <- (x-mean_val)^2
+		numerator <- sum(sqr_dif)
+		std_val <- sqrt(numerator/(length(x)-1))
+		return(std_val)
+	}
+}
+```
+
+
 
 The `echo: false` option disables the printing of code (only output is displayed).
