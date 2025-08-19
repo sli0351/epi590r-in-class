@@ -29,11 +29,11 @@ sqr(z=c(100,9899))
 *Exercise: Add to numbers
 
 ```{r}
-sum <- function(a,b){
+suM <- function(a,b){
 	sum_val <- a+b
 	return(sum_val)
 }
-sum(4,6)
+suM(4,6)
 ```
 
 Exercise 2.5: raise powers
@@ -45,4 +45,24 @@ raise <- function(a,power=2){
 }
 raise(1.33, 9)
 ```
+
+2.6: Standard Deviation
+
+```{r}
+STD <- function(x){
+	denominator <- length(x) -1
+	mean_val <- mean(x)
+	sqr_dif <- (x-mean_val)^2
+	numerator <- sum(sqr_dif)
+	std_val <- sqrt(numerator/denominator)
+	if (denominator >0){
+		std_val <- std_val
+		return(std_val)
+	}else{
+		print("NA")
+	}
+	
+}
+```
+
 The `echo: false` option disables the printing of code (only output is displayed).
