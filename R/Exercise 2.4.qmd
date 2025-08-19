@@ -1,0 +1,29 @@
+---
+title: "Exercise 2.4"
+author: Sophia
+format: html
+execute: 
+  echo: false
+---
+Example
+
+```{r}
+new_mean <- function(x){
+	n <- length(x)
+	mean_val <- sum(x)/n
+	return(mean_val)
+}
+new_mean(x=c(100,200,300))
+```
+
+Exercise : x^2
+
+```{r}
+sqr <- function(x){
+	sqr_val <- x^2
+	return(sqr_val)
+}
+sqr(x=c(100,9899))
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
