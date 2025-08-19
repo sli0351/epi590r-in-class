@@ -46,7 +46,7 @@ raise <- function(a,power=2){
 raise(1.33, 9)
 ```
 
-2.6.1: Standard Deviation
+Exercise 2.6.1: Standard Deviation
 
 ```{r}
 STD <- function(x){
@@ -61,7 +61,7 @@ STD <- function(x){
 }
 ```
 
-2.6.2: SD + remove missing values in advance
+Exercise 2.6.2: SD + remove missing values in advance
 
 ```{r}
 STD2 <- function(x, na.rm= TRUE){
@@ -82,6 +82,27 @@ STD2 <- function(x, na.rm= TRUE){
 }
 ```
 
+Exercise 2.6.3: Income SD
 
+```{r}
+#Preparation
+install.packages("gtsummary", dependencies = TRUE)
+library(gtsummary)
+library(tidyverse)
+#nlsy
+nlsy_cols <- c(
+  "glasses", "eyesight", "sleep_wkdy", "sleep_wknd",
+  "id", "nsibs", "samp", "race_eth", "sex", "region",
+  "income", "res_1980", "res_2002", "age_bir"
+)
+nlsy <- read_csv(here::here("data", "raw", "nlsy.csv"),
+  na = c("-1", "-2", "-3", "-4", "-5", "-998"),
+  skip = 1, col_names = nlsy_cols
+) 
+#Calculate: income SD
+STD2(nlsy$income, na.rm = TRUE)
+#Compared with sd()
+sd(nlsy$income, na.rm = TRUE)
+```
 
 The `echo: false` option disables the printing of code (only output is displayed).
