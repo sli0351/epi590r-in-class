@@ -60,6 +60,8 @@ tbl_summary(
 @tbl-one and @tbl-two shows the descriptive stastistics.
 
 ```{r}
+#| label: tbl-three
+#| tbl-cap: "Doesn't Matter"
 tbl_summary(
   nlsy,
   by = sex_cat,
@@ -73,4 +75,20 @@ mean_wkdy <- mean(nlsy$sleep_wkdy, na.rm = TRUE)
 median_wkdy <- median(nlsy$sleep_wkdy, na.rm = TRUE)
 ```
 The mean of sleeping time on weekdays is `r round(mean_wkdy, 2)`.
-The median of sleeping time on weekdyas is `r round(median_wkdy, 2)`.
+The median of sleeping time on weekdays is `r round(median_wkdy, 2)`.
+```{r}
+#| label: tbl-four
+#| tbl-cap: "Exercise 2.3.2"
+
+table4 <-tbl_summary(
+  nlsy,
+  by = sex_cat,
+  include = c(sex_cat, race_eth_cat, region_cat,
+              eyesight_cat, glasses, age_bir, sleep_wkdy)) |>
+	add_overall(last = TRUE)
+table4
+south_overall <- inline_text(table4, variable = "region_cat", level = "South", column = "stat_0")
+med_f_wkdy <- inline_text(table4, variable = "sleep_wkdy", column = "stat_2")
+```
+There are `r south_overall` cats from the south region.
+The median of sleeping time on weekdays for female cats is `r med_f_wkdy`.
