@@ -39,8 +39,8 @@ sum(4,6)
 Exercise 2.5: raise powers
 
 ```{r}
-raise <- function(a,b=2){
-	nth_power <- a^b
+raise <- function(a,power=2){
+	nth_power <- a^power
 	return(nth_power)
 }
 raise(1.33, 9)
